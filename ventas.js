@@ -23,17 +23,36 @@ function capturarProductos() {
 function aplicarDescuentoCantidad(productos) {
     let total = productos.reduce((acc, precio) => acc + precio, 0);
     if (productos.length > 5) {
-        total *= 0.90; // Descuento del 10%
+        total *= 0.90;
     }
     return total;
 }
 function calcularIVA(total) {
     return total * 0.19; // 19% de IVA
 }
-
 function aplicarDescuentoFinal(total) {
     if (total > 500000) {
-        total *= 0.95; // Descuento adicional del 5%
+        total *= 0.95;
     }
     return total;
 }
+function calcularTotalFinal(total, iva) {
+    return total + iva;
+}
+function mostrarTotal(totalFinal) {
+    console.log(`Total a pagar: $${totalFinal.toFixed(2)}`);
+}
+function main() {
+    if (!iniciarSesion()) {
+        return;
+    }
+
+    const productos = capturarProductos();
+    let total = aplicarDescuentoCantidad(productos);
+    const iva = calcularIVA(total);
+    let totalFinal = calcularTotalFinal(total, iva);
+    totalFinal = aplicarDescuentoFinal(totalFinal);
+
+    mostrarTotal(totalFinal);
+}
+main();
