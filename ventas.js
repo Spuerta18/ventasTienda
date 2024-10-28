@@ -20,3 +20,10 @@ function capturarProductos() {
     }
     return productos;
 }
+function aplicarDescuentoCantidad(productos) {
+    let total = productos.reduce((acc, precio) => acc + precio, 0);
+    if (productos.length > 5) {
+        total *= 0.90; // Descuento del 10%
+    }
+    return total;
+}
