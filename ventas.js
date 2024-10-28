@@ -9,3 +9,14 @@ function iniciarSesion() {
         return false;
     }
 }
+function capturarProductos() {
+    const productos = [];
+    while (true) {
+        const precio = parseFloat(prompt("Ingrese el precio del producto (0 para finalizar):"));
+        if (precio === 0) {
+            break;
+        }
+        productos.push(precio);
+    }
+    return productos;
+}
