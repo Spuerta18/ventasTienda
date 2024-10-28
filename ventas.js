@@ -27,3 +27,13 @@ function aplicarDescuentoCantidad(productos) {
     }
     return total;
 }
+function calcularIVA(total) {
+    return total * 0.19; // 19% de IVA
+}
+
+function aplicarDescuentoFinal(total) {
+    if (total > 500000) {
+        total *= 0.95; // Descuento adicional del 5%
+    }
+    return total;
+}
